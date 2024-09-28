@@ -5,14 +5,14 @@ $product = new Product(); // สร้าง instance ของ Product
 
 //ตรวจสอบว่ามีการส่งข้อมูล POST เพื่อสร้างผลิตภัณฑ์หรือไม่
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $ID = $_POST['ID'];
+   
     $name = $_POST['ProductName'];
     $price = $_POST['ProductPrice'];
     $size = $_POST['ProductSize'];
     $info = $_POST['ProductInfo'];
 
     // เรียกฟังก์ชันสร้างผลิตภัณฑ์
-    $product->create($ID, $name, $price, $size, $info);
+    $product->create($name, $price, $size, $info);
 }
 
 // ดึงข้อมูลผลิตภัณฑ์
@@ -30,7 +30,7 @@ $product = $product->read();
 
     <h2>Add Product</h2>
     <form method="POST">
-    <input type="text" name="ID" placeholder="Product ID" required>
+    
         <input type="text" name="ProductName" placeholder="Product Name" required>
         <input type="number" name="ProductPrice" placeholder="Product Price" required>
         <input type="text" name="ProductSize" placeholder="Product Size" required>

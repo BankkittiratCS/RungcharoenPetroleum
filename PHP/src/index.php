@@ -1,6 +1,6 @@
 <?php
 // index.php
-require_once 'config.php'; // นำเข้าไฟล์ config.php เพื่อใช้ค่าคอนฟิก
+ // นำเข้าไฟล์ config.php เพื่อใช้ค่าคอนฟิก
 require_once 'Database.php'; // นำเข้าไฟล์ Database.php เพื่อใช้คลาส Database
 
 try {

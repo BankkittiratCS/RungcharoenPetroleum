@@ -11,12 +11,12 @@ class Product {
     }
 
     // ฟังก์ชันสร้างผลิตภัณฑ์
-    public function create($ID,$name, $price, $size, $info) {
-        $query = "INSERT INTO " . $this->table_name . "(ProductID,ProductName, ProductPrice, ProductSize, ProductInfo) VALUES (:ID,:name, :price, :size, :info)";
+    public function create($name, $price, $size, $info) {
+        $query = "INSERT INTO " . $this->table_name . "(ProductName, ProductPrice, ProductSize, ProductInfo) VALUES (:name, :price, :size, :info)";
         $stmt = $this->connection->prepare($query); // เตรียมคำสั่ง SQL
 
         // ตั้งค่าพารามิเตอร์
-        $stmt->bindParam(':ID', $ID);
+        
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':size', $size);

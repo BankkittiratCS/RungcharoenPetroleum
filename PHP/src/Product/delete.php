@@ -9,6 +9,6 @@ if (isset($_GET['id'])) {
 }
 
 // เปลี่ยนเส้นทางกลับไปยังหน้า index
-header("Location: index.php");
+header("Location: Productindex.php");
 exit;
 ?>

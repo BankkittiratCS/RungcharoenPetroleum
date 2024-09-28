@@ -47,7 +47,7 @@ class Database {
         if ($result) {
             foreach ($result as $row) {
                 // แสดงผลข้อมูลในรูปแบบที่อ่านง่าย
-                echo "<pre>" . print_r($row, true) . "</pre>";
+                echo "<pre>" . htmlspecialchars($row, true) . "</pre>";
             }
         } else {
             echo "No results found."; // แสดงข้อความเมื่อไม่พบข้อมูล
