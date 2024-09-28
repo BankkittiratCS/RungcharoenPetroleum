@@ -1,0 +1,32 @@
+# Step 1: Use the official PHP-Apache base image
+FROM php:8.1-apache
+
+# Step 2: Install necessary PHP extensions and system packages
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    zip \
+    libzip-dev \
+    unzip \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd pdo pdo_mysql zip
+
+# Step 3: Enable Apache rewrite module (mod_rewrite)
+RUN a2enmod rewrite
+COPY php.ini /usr/local/etc/php/php.ini
+# Step 4: Set working directory
+WORKDIR /var/www/html
+
+# Step 5: Copy the application files into the container
+COPY ./src /var/www/html
+
+# Step 6: Set correct file permissions
+RUN chown -R www-data:www-data /var/www/html
+
+# Step 7: Expose the default Apache port
+EXPOSE 80
+
+# Step 8: Start Apache in the foreground
+CMD ["apache2-foreground"]
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
